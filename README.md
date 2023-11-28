@@ -1,5 +1,13 @@
 # Election 2020 Pipeline
 
+<p>
+<img alt="Pandas" src="https://img.shields.io/badge/-Pandas-5849BE?style=flat-square&logo=pandas&logoColor=white" />
+<img alt="Docker" src="https://img.shields.io/badge/-Docker-46a2f1?style=flat-square&logo=docker&logoColor=white" />
+<img alt="python" src="https://img.shields.io/badge/-Python-13aa52?style=flat-square&logo=python&logoColor=white" />
+<img alt="mysql" src="https://img.shields.io/badge/-mysql-F7B93E?style=flat-square&logo=mysql&logoColor=black" />
+<img alt="AWS" src="https://img.shields.io/badge/-AWS-DD0031?style=flat-square&logo=amazonaws&logoColor=white" />
+</p>
+
 Welcome to the 2020 Election Data Pipeline project. This project is designed to streamline the process of collecting, cleaning, joining, and storing election-related data for the 2020 U.S. elections. Leveraging the power of Amazon RDS for robust data storage, the pipeline includes a suite of scripts for web scraping data from various APIs and handling CSV files. Our goal is to create an efficient and automated pipeline that simplifies the task of managing large volumes of election data.
 
 ## Project Overview
