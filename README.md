@@ -74,15 +74,6 @@ A step-by-step series of examples that tell you how to get a development environ
 - `README.md`: The README file for the project.
 - `temp.py`: Temporary script file.
 
-- `.idea/`: IDE specific configuration files for JetBrains PyCharm.
-  - `.gitignore`: Local gitignore for the IDE.
-  - `Election_pipline.iml`: Project file for PyCharm.
-  - `misc.xml`: Miscellaneous IDE settings.
-  - `modules.xml`: IDE module settings.
-  - `workspace.xml`: Workspace settings.
-  - `inspectionProfiles/`: Inspection profiles for the IDE.
-    - `profiles_settings.xml`: Settings for inspection profiles.
-
 - `Collect/`: Collection scripts for various types of data.
   - `collect_data.py`: General data collection script.
   - `econ_data.py`: Economic data collection script.
