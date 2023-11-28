@@ -33,7 +33,7 @@ A step-by-step series of examples that tell you how to get a development environ
 1. Clone the repository
 
 ```bash
-  git clone https://yourprojectlink.com
+  git clone https://github.com/johnhangen/2020_Election_Pipeline
 ```
 
 2. navigate to the project directory
