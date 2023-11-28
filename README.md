@@ -114,3 +114,5 @@ A step-by-step series of examples that tell you how to get a development environ
 - Supervised Learning Model to predict election results
 - More data sources
 - Further integration with AWS
+- Dockerization
+- More robust logging
