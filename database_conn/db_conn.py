@@ -16,40 +16,7 @@ from dotenv import load_dotenv
 import os
 from sqlalchemy import create_engine
 from os.path import join, dirname
-
-
-def load_env_vars() -> dict:
-    """
-    Loads environment variables from a .env file and validates their presence.
-
-    This function first determines the path of the .env file located one level up from the current script's directory.
-    It then loads environment variables using the dotenv module. After loading the variables, it checks for the presence
-    of all required environment variables listed in 'required_vars'. If any of these variables are not set, the function
-    logs an error and raises an EnvironmentError.
-
-    Returns:
-        dict: A dictionary containing all the required environment variables.
-
-    Raises:
-        EnvironmentError: If any of the required environment variables is not set.
-
-    Note:
-        The required environment variables are: ENDPOINT, PORT, USER, REGION, PASSWORD, DBNAME.
-    """
-    dotenv_path = join(dirname(dirname(__file__)), '.env')
-    load_dotenv(dotenv_path)
-
-    required_vars = ["ENDPOINT", "PORT", "USER", "REGION", "PASSWORD", "DBNAME"]
-    env_vars_test = {}
-
-    for var in required_vars:
-        value = os.environ.get(var)
-        if value is None:
-            logging.error(f"Required environment variable '{var}' is not set.")
-            raise EnvironmentError(f"Required environment variable '{var}' is not set.")
-        env_vars_test[var] = value
-
-    return env_vars_test
+from contextlib import contextmanager
 
 
 class DataBaseConnector:
@@ -85,7 +52,7 @@ class DataBaseConnector:
         self.cur = None
 
         try:
-            env_vars = load_env_vars()
+            env_vars = self.load_env_vars()
             self.endpoint = env_vars["ENDPOINT"]
             self.port = int(env_vars["PORT"])
             self.user = env_vars["USER"]
@@ -96,6 +63,40 @@ class DataBaseConnector:
             logging.error(f"Error loading in env vars {e}")
             print(e)
             exit(1)
+
+    @staticmethod
+    def load_env_vars() -> dict:
+        """
+        Loads environment variables from a .env file and validates their presence.
+
+        This function first determines the path of the .env file located one level up from the current script's directory.
+        It then loads environment variables using the dotenv module. After loading the variables, it checks for the presence
+        of all required environment variables listed in 'required_vars'. If any of these variables are not set, the function
+        logs an error and raises an EnvironmentError.
+
+        Returns:
+            dict: A dictionary containing all the required environment variables.
+
+        Raises:
+            EnvironmentError: If any of the required environment variables is not set.
+
+        Note:
+            The required environment variables are: ENDPOINT, PORT, USER, REGION, PASSWORD, DBNAME.
+        """
+        dotenv_path = join(dirname(dirname(__file__)), '.env')
+        load_dotenv(dotenv_path)
+
+        required_vars = ["ENDPOINT", "PORT", "USER", "REGION", "PASSWORD", "DBNAME"]
+        env_vars_test = {}
+
+        for var in required_vars:
+            value = os.environ.get(var)
+            if value is None:
+                logging.error(f"Required environment variable '{var}' is not set.")
+                raise EnvironmentError(f"Required environment variable '{var}' is not set.")
+            env_vars_test[var] = value
+
+        return env_vars_test
 
     def get_conn(self) -> Connection:
         """
@@ -174,40 +175,33 @@ class DataBaseConnector:
             self.cur.close()
             logging.info("Cursor closed")
 
-    def __enter__(self):
+    @contextmanager
+    def connection(self):
         """
-        Enters the runtime context related to this object. The 'with' statement will bind this method's return value
-        to the target specified in the 'as' clause of the statement, if any.
+        A context manager that establishes a database connection and ensures that resources
+        are properly cleaned up after use. This method allows the DataBaseConnector instance
+        to be used with a 'with' statement, which automatically handles the opening and
+        closing of the database connection and cursor.
 
-        Returns:
-            self (DataBaseConnector): The current instance of DataBaseConnector.
+        Yields:
+            DataBaseConnector: The current instance of DataBaseConnector with an active database connection.
         """
-        self.get_conn()
-        return self
-
-    def __exit__(self, exc_type, exc_val, exc_tb):
-        """
-        Exits the runtime context and closes the database connection and cursor. This method handles the closing
-        of resources whether an exception occurred in the 'with' block.
-
-        Args:
-            exc_type: The type of the exception (if any).
-            exc_val: The value of the exception (if any).
-            exc_tb: The traceback of the exception (if any).
-        """
-        self.close_cur()
-        self.close_conn()
+        try:
+            self.get_conn()
+            yield self
+        except Exception as e:
+            logging.error(f"Error while managing database connection context: {e}")
+            raise
+        finally:
+            self.close_cur()
+            self.close_conn()
 
 
 if __name__ == "__main__":
+    db_connector = DataBaseConnector()
+    with db_connector.connection() as connector:
+        cursor = connector.get_cur()
 
-    db_conn = DataBaseConnector()
-
-    cur = db_conn.get_cur()
-
-    cur.execute("""SELECT now();""")
-    query_results = cur.fetchall()
-    print(query_results)
-
-    db_conn.close_conn()
-    db_conn.close_cur()
+        cursor.execute("""SELECT now();""")
+        query_results = cursor.fetchall()
+        print(query_results)

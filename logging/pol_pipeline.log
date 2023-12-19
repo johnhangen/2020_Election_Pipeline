@@ -1,8 +1,8 @@
-2023-11-27 19:31:17,946 INFO was able to read in election data
-2023-11-27 19:31:18,500 INFO was able to read in fips data
-2023-11-27 19:31:19,045 INFO was able to read in econ data
-2023-11-27 19:31:19,045 INFO shape of election data before (3112, 9)
-2023-11-27 19:31:19,046 INFO shape of fips data before (3146, 4)
-2023-11-27 19:31:19,048 INFO shape of df after join (3113, 13)
-2023-11-27 19:31:19,048 INFO shape of econ df before join (3221, 6)
-2023-11-27 19:31:19,050 INFO shape of df after join (3113, 19)
+2023-11-29 20:20:49,782 INFO was able to read in election data
+2023-11-29 20:20:50,303 INFO was able to read in fips data
+2023-11-29 20:20:50,854 INFO was able to read in econ data
+2023-11-29 20:20:50,854 INFO shape of election data before (3112, 9)
+2023-11-29 20:20:50,854 INFO shape of fips data before (3146, 4)
+2023-11-29 20:20:50,860 INFO shape of df after join (3113, 13)
+2023-11-29 20:20:50,860 INFO shape of econ df before join (3221, 6)
+2023-11-29 20:20:50,865 INFO shape of df after join (3113, 19)
