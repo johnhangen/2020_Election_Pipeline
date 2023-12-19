@@ -22,7 +22,7 @@ def fips_data_transform() -> pd.DataFrame:
     county,
     state_abbr,
     state
-    FROM fips;
+    FROM FIPS;
     """
 
     df = pd.read_sql(query, db_conn.get_engine())
