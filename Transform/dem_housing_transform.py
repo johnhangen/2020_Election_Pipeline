@@ -19,16 +19,14 @@ def dem_house_data_transform() -> pd.DataFrame:
     query = """
     SELECT 
         RIGHT(Geography, 4) AS FIPS,
-        SUBSTRING_INDEX(Geographic_Area_Name, ',', 1) AS COUNTY,
-        SUBSTRING_INDEX(Geographic_Area_Name, ',', -1) AS STATE,
         EST_RACE_T_POP_One_race_White,
         EST_RACE_T_POP_One_race_AA,
         EST_RACE_T_POP_One_race_AI,
         EST_RACE_T_POP_One_race_Asian,
         Percent_T_housing_units,
-        'Percent_CITIZEN,_VOTE,_18_and_over_POP',
-        'Percent_CITIZEN,_VOTE,_18_and_over_POP_Male',
-        'Percent_CITIZEN,_VOTE,_18_and_over_POP_Female'
+        `Percent_CITIZEN,_VOTE,_18_and_over_POP`,
+        `Percent_CITIZEN,_VOTE,_18_and_over_POP_Male`,
+        `Percent_CITIZEN,_VOTE,_18_and_over_POP_Female`
     
     FROM demographic_and_housing;
     """

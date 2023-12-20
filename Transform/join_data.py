@@ -15,6 +15,8 @@ from Transform.fip_transform import fips_data_transform
 from Transform.econ_transform import econ_data_transform
 from Transform.dem_housing_transform import dem_house_data_transform
 from Transform.AgeSexData_transform import sex_age_data_transform
+from Transform.income_transform import income_data_transform
+from Transform.ooc import ooc_data_transform
 
 
 def join_data() -> pd.DataFrame:
@@ -49,13 +51,33 @@ def join_data() -> pd.DataFrame:
 
     logging.info(f"shape of df after join {df_fips_election_econ.shape}")
 
-    return df_fips_election_econ_house_age
+    inc_df = income_data_transform()
+    inc_df['FIPS'] = inc_df['FIPS'].astype(int)
+
+    logging.info(f"shape of df after join {df_fips_election_econ_house_age.shape}")
+
+    df_fips_election_econ_house_age_inc = df_fips_election_econ_house_age.merge(inc_df, how='left', left_on='FIPS', right_on='FIPS')
+
+    logging.info(f"shape of df after join {df_fips_election_econ_house_age_inc.shape}")
+
+    ooc_df = ooc_data_transform()
+    ooc_df['FIPS'] = ooc_df['FIPS'].astype(int)
+
+    logging.info(f"shape of df after join {df_fips_election_econ_house_age_inc.shape}")
+
+    df_fips_election_econ_house_age_inc_ooc = df_fips_election_econ_house_age_inc.merge(ooc_df, how='left', left_on='FIPS', right_on='FIPS')
+
+    logging.info(f"shape of df after join {df_fips_election_econ_house_age_inc_ooc.shape}")
+
+    return df_fips_election_econ_house_age_inc_ooc
 
 
 def main():
     df = join_data()
 
     print(df.head())
+
+    df.to_csv(r'C:\Users\jthan\PycharmProjects\Election_pipline\output\final.csv')
 
 
 if __name__ == "__main__":

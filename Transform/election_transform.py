@@ -20,7 +20,6 @@ def election_data_transform() -> pd.DataFrame:
     SELECT
     FIPS,
     Code,
-    County,
     Population,
     2020W AS 2020_winner,
     2020D AS DEM_per,

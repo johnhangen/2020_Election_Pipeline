@@ -133,7 +133,7 @@ class CensusData(PushDF):
         replacements = [
             ("!!", "_"),
             (" ", "_"),
-            ("Total_", "T_"),
+            ("Total", "T"),
             ("Estimate", "EST"),
             ("Margin_of_Error_population", "MOE_POP"),
             ("Estimate_Percent", "EPER"),
@@ -155,7 +155,25 @@ class CensusData(PushDF):
             ("HISPANIC_OR_LATINO", "HIS"),
             ("and_Three_or_more_races", "3+"),
             ("VOTING_AGE_POPULATION_Citizen", "VOTE"),
-            ("males_per_100_females", "MP100F")
+            ("males_per_100_females", "MP100F"),
+            ("Civilian_employed", "CE"),
+            ("Management,_business,_science,_and_arts_occupations", "CAS"),
+            ("Service_occupations", "SERV"),
+            ("Sales_and_office_occupations", "SALES"),
+            ("Production,_transportation,_and_material_moving_occupations", "PRIV"),
+            ("Natural_resources,_construction,_and_maintenance_occupations", "CONST"),
+            ("Employee_of_private_company_workers", "PRIV"),
+            ("employed_in_own_incorporated_business_workers", "OWN"),
+            ("Private_not-for-profit_wage_and_salary_workers", "NON_PROF"),
+            ("Local,_state,_and_federal_government_workers", "GOV"),
+            ("Self-employed_in_own_not_incorporated_business_workers_and_unpaid_family_workers", "SELF_EMP"),
+            ("Married-couple_families", "MCF"),
+            ("Families", "FAM"),
+            ("Household_income", "HHI"),
+            ("Households", "HH"),
+            ("in_the_past_12_months", "WI12MO"),
+            ("Family_income", "FAMINC"),
+            ("Nonfamily_households", "NFAM")
         ]
 
         for old, new in replacements:

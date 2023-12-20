@@ -51,6 +51,8 @@ def main():
     election_api.push_to_server('elections')
 
     # push census data to server
+
+    # age and sex data
     census_data = CensusData('AgeSexData.csv', engine)
 
     census_data.get_column_mappings('AgeSexData_columnMappings.csv')
@@ -59,6 +61,7 @@ def main():
 
     census_data.push_to_server('AgeSexData')
 
+    # demographic and housing data
     census_data = CensusData('demographic_and_housing.csv', engine)
 
     census_data.get_column_mappings('demographic_and_housing_columnMappings.csv')
@@ -67,6 +70,26 @@ def main():
     census_data.drop_duplicate_columns()
 
     census_data.push_to_server('demographic_and_housing')
+
+    # occupation and class of worker
+    census_data = CensusData('occ.csv', engine)
+
+    census_data.get_column_mappings('occ_columnMappings.csv')
+    census_data.apply_column_mappings()
+    census_data.convert_to_type_numeric()
+    census_data.drop_duplicate_columns()
+
+    census_data.push_to_server('occ')
+
+    # Income
+    census_data = CensusData('income.csv', engine)
+
+    census_data.get_column_mappings('income_columnMappings.csv')
+    census_data.apply_column_mappings()
+    census_data.convert_to_type_numeric()
+    census_data.drop_duplicate_columns()
+
+    census_data.push_to_server('income')
 
 
 if __name__ == "__main__":
