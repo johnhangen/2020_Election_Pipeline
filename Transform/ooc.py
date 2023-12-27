@@ -18,7 +18,7 @@ def ooc_data_transform() -> pd.DataFrame:
 
     query = """
         SELECT
-            RIGHT(Geography, 4) AS FIPS,
+            RIGHT(Geography, 5) AS FIPS,
             EST_T_CE_POP_16_YO,
             EST_T_PERCENT_ALLOCATED_Occupation
         

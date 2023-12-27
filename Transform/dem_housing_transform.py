@@ -18,7 +18,7 @@ def dem_house_data_transform() -> pd.DataFrame:
 
     query = """
     SELECT 
-        RIGHT(Geography, 4) AS FIPS,
+        RIGHT(Geography, 5) AS FIPS,
         EST_RACE_T_POP_One_race_White,
         EST_RACE_T_POP_One_race_AA,
         EST_RACE_T_POP_One_race_AI,

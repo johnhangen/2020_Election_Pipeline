@@ -18,7 +18,7 @@ def sex_age_data_transform() -> pd.DataFrame:
 
     query = """
         SELECT 
-            RIGHT(Geography, 4) AS FIPS,
+            RIGHT(Geography, 5) AS FIPS,
             EST_Percent_T_POP_AGE_20_to_24_years,
             EST_Percent_T_POP_AGE_25_to_29_years,
             EST_Percent_T_POP_AGE_30_to_34_years

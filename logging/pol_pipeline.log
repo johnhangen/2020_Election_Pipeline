@@ -1,18 +1,14 @@
-2023-12-27 12:24:06,667 INFO was able to read in election data
-2023-12-27 12:24:07,177 INFO was able to read in fips data
-2023-12-27 12:24:07,177 INFO shape of election data before (3112, 8)
-2023-12-27 12:24:07,177 INFO shape of fips data before (3146, 4)
-2023-12-27 12:24:07,708 INFO was able to read in econ data
-2023-12-27 12:24:07,708 INFO shape of df after join (3113, 12)
-2023-12-27 12:24:07,708 INFO shape of econ df before join (3221, 4)
-2023-12-27 12:24:08,215 INFO was able to read in dem and house data
-2023-12-27 12:24:08,216 INFO shape of df after join (3113, 16)
-2023-12-27 12:24:08,796 INFO was able to read in sex and age data
-2023-12-27 12:24:08,799 INFO shape of df after join (4073, 24)
-2023-12-27 12:24:08,806 INFO shape of df after join (3113, 16)
-2023-12-27 12:24:09,321 INFO was able to read in income data
-2023-12-27 12:24:09,322 INFO shape of df after join (8623, 38)
-2023-12-27 12:24:09,338 INFO shape of df after join (30875, 42)
-2023-12-27 12:24:09,818 INFO was able to read in ooc data
-2023-12-27 12:24:09,818 INFO shape of df after join (30875, 42)
-2023-12-27 12:24:09,873 INFO shape of df after join (142339, 44)
+2023-12-27 15:43:13,175 INFO was able to read in election data
+2023-12-27 15:43:13,668 INFO was able to read in fips data
+2023-12-27 15:43:13,668 INFO shape of election data before (3112, 8)
+2023-12-27 15:43:13,668 INFO shape of fips data before (3146, 4)
+2023-12-27 15:43:14,185 INFO was able to read in econ data
+2023-12-27 15:43:14,187 INFO ECON: (3113, 12)
+2023-12-27 15:43:14,769 INFO was able to read in dem and house data
+2023-12-27 15:43:14,772 INFO DEM AND HOUSING (3113, 24)
+2023-12-27 15:43:15,300 INFO was able to read in sex and age data
+2023-12-27 15:43:15,302 INFO AGE SEX (3113, 38)
+2023-12-27 15:43:15,797 INFO was able to read in income data
+2023-12-27 15:43:15,800 INFO INCOME (3113, 42)
+2023-12-27 15:43:16,297 INFO was able to read in ooc data
+2023-12-27 15:43:16,300 INFO OOO (3113, 44)

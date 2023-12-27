@@ -18,7 +18,7 @@ def income_data_transform() -> pd.DataFrame:
 
     query = """
         SELECT
-            RIGHT(Geography, 4) AS FIPS,
+            RIGHT(Geography, 5) AS FIPS,
             `EST_HH_Median_income_(dollars)`,
             `MOE_HH_Median_income_(dollars)`,
             `EST_HH_Mean_income_(dollars)`,
