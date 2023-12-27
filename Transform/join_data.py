@@ -40,12 +40,12 @@ def join_data() -> pd.DataFrame:
 
     logging.info(f"shape of df after join {df_fips_election_econ.shape}")
 
-    df_fips_election_econ_house = df_fips_election.merge(dem_house_df, how='left', left_on='FIPS', right_on='FIPS')
+    df_fips_election_econ_house = df_fips_election_econ.merge(dem_house_df, how='left', left_on='FIPS', right_on='FIPS')
 
     age_sex_df = sex_age_data_transform()
     age_sex_df['FIPS'] = age_sex_df['FIPS'].astype(int)
 
-    logging.info(f"shape of df after join {df_fips_election_econ.shape}")
+    logging.info(f"shape of df after join {df_fips_election_econ_house.shape}")
 
     df_fips_election_econ_house_age = df_fips_election_econ_house.merge(age_sex_df, how='left', left_on='FIPS', right_on='FIPS')
 
@@ -68,6 +68,8 @@ def join_data() -> pd.DataFrame:
     df_fips_election_econ_house_age_inc_ooc = df_fips_election_econ_house_age_inc.merge(ooc_df, how='left', left_on='FIPS', right_on='FIPS')
 
     logging.info(f"shape of df after join {df_fips_election_econ_house_age_inc_ooc.shape}")
+
+    df_fips_election_econ_house_age_inc_ooc.drop_duplicates(subset='FIPS', inplace=True)
 
     return df_fips_election_econ_house_age_inc_ooc
 

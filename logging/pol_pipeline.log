@@ -1,8 +1,18 @@
-2023-11-29 20:20:49,782 INFO was able to read in election data
-2023-11-29 20:20:50,303 INFO was able to read in fips data
-2023-11-29 20:20:50,854 INFO was able to read in econ data
-2023-11-29 20:20:50,854 INFO shape of election data before (3112, 9)
-2023-11-29 20:20:50,854 INFO shape of fips data before (3146, 4)
-2023-11-29 20:20:50,860 INFO shape of df after join (3113, 13)
-2023-11-29 20:20:50,860 INFO shape of econ df before join (3221, 6)
-2023-11-29 20:20:50,865 INFO shape of df after join (3113, 19)
+2023-12-27 12:24:06,667 INFO was able to read in election data
+2023-12-27 12:24:07,177 INFO was able to read in fips data
+2023-12-27 12:24:07,177 INFO shape of election data before (3112, 8)
+2023-12-27 12:24:07,177 INFO shape of fips data before (3146, 4)
+2023-12-27 12:24:07,708 INFO was able to read in econ data
+2023-12-27 12:24:07,708 INFO shape of df after join (3113, 12)
+2023-12-27 12:24:07,708 INFO shape of econ df before join (3221, 4)
+2023-12-27 12:24:08,215 INFO was able to read in dem and house data
+2023-12-27 12:24:08,216 INFO shape of df after join (3113, 16)
+2023-12-27 12:24:08,796 INFO was able to read in sex and age data
+2023-12-27 12:24:08,799 INFO shape of df after join (4073, 24)
+2023-12-27 12:24:08,806 INFO shape of df after join (3113, 16)
+2023-12-27 12:24:09,321 INFO was able to read in income data
+2023-12-27 12:24:09,322 INFO shape of df after join (8623, 38)
+2023-12-27 12:24:09,338 INFO shape of df after join (30875, 42)
+2023-12-27 12:24:09,818 INFO was able to read in ooc data
+2023-12-27 12:24:09,818 INFO shape of df after join (30875, 42)
+2023-12-27 12:24:09,873 INFO shape of df after join (142339, 44)
